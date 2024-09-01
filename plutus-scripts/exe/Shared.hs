@@ -3,6 +3,7 @@
 
 module Shared where
 
+import qualified PlutusLedgerApi.V2 as PlutusV2
 import PlutusLedgerApi.V3 (
     ScriptContext (..),
     UnsafeFromData (..),
@@ -36,8 +37,10 @@ wrapOneArg f ctx =
 
 {-# INLINEABLE wrapTwoArgs #-}
 wrapTwoArgs ::
-    (UnsafeFromData a) =>
-    (a -> ScriptContext -> Bool) ->
+    ( UnsafeFromData a
+    , UnsafeFromData b
+    ) =>
+    (a -> b -> Bool) ->
     (BuiltinData -> BuiltinData -> BuiltinUnit)
 wrapTwoArgs f a ctx =
     check
@@ -49,8 +52,9 @@ wrapTwoArgs f a ctx =
 wrapThreeArgs ::
     ( UnsafeFromData a
     , UnsafeFromData b
+    , UnsafeFromData c
     ) =>
-    (a -> b -> ScriptContext -> Bool) ->
+    (a -> b -> c -> Bool) ->
     (BuiltinData -> BuiltinData -> BuiltinData -> BuiltinUnit)
 wrapThreeArgs f a b ctx =
     check
@@ -64,11 +68,71 @@ wrapFourArgs ::
     ( UnsafeFromData a
     , UnsafeFromData b
     , UnsafeFromData c
+    , UnsafeFromData d
     ) =>
-    (a -> b -> c -> ScriptContext -> Bool) ->
+    (a -> b -> c -> d -> Bool) ->
     (BuiltinData -> BuiltinData -> BuiltinData -> BuiltinData -> BuiltinUnit)
 wrapFourArgs f a b c ctx =
     check
+        $ f
+            (unsafeFromBuiltinData a)
+            (unsafeFromBuiltinData b)
+            (unsafeFromBuiltinData c)
+            (unsafeFromBuiltinData ctx)
+
+{-# INLINEABLE checkV2 #-}
+checkV2 :: Bool -> ()
+checkV2 b = if b then () else error ()
+
+{-# INLINEABLE wrapOneArgV2 #-}
+wrapOneArgV2 ::
+    (UnsafeFromData a) =>
+    (a -> Bool) ->
+    (BuiltinData -> ())
+wrapOneArgV2 f ctx =
+    checkV2
+        $ f
+            (unsafeFromBuiltinData ctx)
+
+{-# INLINEABLE wrapTwoArgsV2 #-}
+wrapTwoArgsV2 ::
+    ( UnsafeFromData a
+    , UnsafeFromData b
+    ) =>
+    (a -> b -> Bool) ->
+    (BuiltinData -> BuiltinData -> ())
+wrapTwoArgsV2 f a ctx =
+    checkV2
+        $ f
+            (unsafeFromBuiltinData a)
+            (unsafeFromBuiltinData ctx)
+
+{-# INLINEABLE wrapThreeArgsV2 #-}
+wrapThreeArgsV2 ::
+    ( UnsafeFromData a
+    , UnsafeFromData b
+    , UnsafeFromData c
+    ) =>
+    (a -> b -> c -> Bool) ->
+    (BuiltinData -> BuiltinData -> BuiltinData -> ())
+wrapThreeArgsV2 f a b ctx =
+    checkV2
+        $ f
+            (unsafeFromBuiltinData a)
+            (unsafeFromBuiltinData b)
+            (unsafeFromBuiltinData ctx)
+
+{-# INLINEABLE wrapFourArgsV2 #-}
+wrapFourArgsV2 ::
+    ( UnsafeFromData a
+    , UnsafeFromData b
+    , UnsafeFromData c
+    , UnsafeFromData d
+    ) =>
+    (a -> b -> c -> d -> Bool) ->
+    (BuiltinData -> BuiltinData -> BuiltinData -> BuiltinData -> ())
+wrapFourArgsV2 f a b c ctx =
+    checkV2
         $ f
             (unsafeFromBuiltinData a)
             (unsafeFromBuiltinData b)

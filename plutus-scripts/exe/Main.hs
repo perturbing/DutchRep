@@ -28,17 +28,26 @@ import Cardano.Api.Shelley (
     serialiseToRawBytes,
     unsafeHashableScriptData,
  )
+import qualified PlutusCore.Version as PLC
 import qualified PlutusLedgerApi.V1 as PlutusV1
 import qualified PlutusLedgerApi.V2 as PlutusV2
 import qualified PlutusLedgerApi.V3 as PlutusV3
-import PlutusTx (CompiledCode, liftCodeDef, unsafeApplyCode)
+import PlutusTx (
+    CompiledCode,
+    liftCode,
+    liftCodeDef,
+    unsafeApplyCode,
+ )
 import qualified PlutusTx.Builtins as PlutusTx
 
-import Scripts (
-    alwaysTrueCode,
+import ScriptsV2 (
+    alwaysTrueCodeV2,
+    dutchDrepNFTScriptCode,
+ )
+import ScriptsV3 (
+    alwaysTrueCodeV3,
     dutchDrepCredentialCode,
     dutchDrepLockScriptCode,
-    dutchDrepNFTScriptCode,
  )
 
 import Data.Aeson (Value, decode)
@@ -68,18 +77,18 @@ printDataToJSON = putStrLn . BS8.unpack . prettyPrintJSON . dataToJSON
 ---------------------------------------
 
 -- Define the TxOutRef that needs to be spent to mint the DutchDrep NFT
-initTxOutRef :: PlutusV3.TxOutRef
+initTxOutRef :: PlutusV2.TxOutRef
 initTxOutRef =
-    PlutusV3.TxOutRef
-        ((PlutusV3.TxId . P.integerToByteString BigEndian 32) 0x7f6a7f48d447b1ae63ec2b8b1a623cca4d36838f8010e545c565c2d26ccb70f5)
+    PlutusV2.TxOutRef
+        ((PlutusV2.TxId . P.integerToByteString BigEndian 32) 0x77c5408a5bce7c4c317b7a0b666be913038741ba645df443f0cb0e6ae9740cd6)
         1
 
--- The above TxOutRef is applied to the script to finalize the script
-appliedDutchDrepNFTScriptCode :: CompiledCode (P.BuiltinData -> P.BuiltinUnit)
-appliedDutchDrepNFTScriptCode = dutchDrepNFTScriptCode `unsafeApplyCode` PlutusTx.liftCodeDef (PlutusV3.toBuiltinData initTxOutRef)
+-- The above TxOutRef is applied to the V2 script to finalize the script
+appliedDutchDrepNFTScriptCode :: CompiledCode (P.BuiltinData -> P.BuiltinData -> ())
+appliedDutchDrepNFTScriptCode = dutchDrepNFTScriptCode `unsafeApplyCode` PlutusTx.liftCode PLC.plcVersion100 (PlutusV3.toBuiltinData initTxOutRef)
 
 scriptHashDutchDrepNFT :: ScriptHash
-scriptHashDutchDrepNFT = hashScript . PlutusScript PlutusScriptV3 . PlutusScriptSerialised . PlutusV3.serialiseCompiledCode $ appliedDutchDrepNFTScriptCode
+scriptHashDutchDrepNFT = hashScript . PlutusScript PlutusScriptV2 . PlutusScriptSerialised . PlutusV2.serialiseCompiledCode $ appliedDutchDrepNFTScriptCode
 
 -- The currency symbol of the DutchDrep NFT
 dutchDrepNFTSymbol :: PlutusV3.CurrencySymbol
@@ -94,8 +103,9 @@ scriptHashDutchDrepCredential = hashScript . PlutusScript PlutusScriptV3 . Plutu
 
 main :: IO ()
 main = do
-    -- writeCodeToFile PlutusScriptV3 "./assets/V3/alwaysTrue.plutus" alwaysTrueCode
-    writeCodeToFile PlutusScriptV3 "./assets/V3/dutchDrepNFT.plutus" appliedDutchDrepNFTScriptCode
+    -- writeCodeToFile PlutusScriptV3 "./assets/V3/alwaysTrueV3.plutus" alwaysTrueCodeV3
+    -- writeCodeToFile PlutusScriptV2 "./assets/V2/alwaysTrueV2.plutus" alwaysTrueCodeV2
+    writeCodeToFile PlutusScriptV2 "./assets/V2/dutchDrepNFT.plutus" appliedDutchDrepNFTScriptCode
     print $ "Currency Symbol (PolicyID) of the Dutch Drep NFT: " ++ show dutchDrepNFTSymbol
     writeCodeToFile PlutusScriptV3 "./assets/V3/dutchDrepCredential.plutus" appliedDutchDrepCredentialCode
     print $ "Script Hash of Credential: " ++ show scriptHashDutchDrepCredential

@@ -34,7 +34,7 @@ then (after HF)
 cardano-cli conway governance drep registration-certificate \
  --drep-script-hash $(cat dutchDrepCredential.hash) \
  --key-reg-deposit-amt $(cardano-cli conway query gov-state --mainnet | jq -r .currentPParams.dRepDeposit) \
- --out-file register-dutchDrepCredential.
+ --out-file register-dutchDrepCredential.cert
 ```
 create tx
 ```bash

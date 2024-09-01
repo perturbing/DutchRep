@@ -80,8 +80,8 @@ printDataToJSON = putStrLn . BS8.unpack . prettyPrintJSON . dataToJSON
 initTxOutRef :: PlutusV2.TxOutRef
 initTxOutRef =
     PlutusV2.TxOutRef
-        ((PlutusV2.TxId . P.integerToByteString BigEndian 32) 0x2f575da74f9181628ee7271daac4e9889f3953386df26ff18f10b9c1fb781599)
-        0
+        ((PlutusV2.TxId . P.integerToByteString BigEndian 32) 0xf2732e909e6c2c5270a5ea581f5889e71379e0568acd33414b91c2359c2fcfc4)
+        437
 
 -- The above TxOutRef is applied to the V2 script to finalize the script
 appliedDutchDrepNFTScriptCode :: CompiledCode (P.BuiltinData -> P.BuiltinData -> ())

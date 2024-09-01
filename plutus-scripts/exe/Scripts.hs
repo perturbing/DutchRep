@@ -16,9 +16,13 @@
 
 module Scripts (
     dutchDrepCredentialCode,
-    alwaysTrueMintCode,
+    dutchDrepLockScriptCode,
+    dutchDrepNFTScriptCode,
+    -- Testing purposes
+    alwaysTrueCode,
 ) where
 
+import PlutusLedgerApi.V1.Data.Value (flattenValue)
 import PlutusLedgerApi.V3 (
     CurrencySymbol,
     Datum (..),
@@ -45,6 +49,7 @@ import PlutusTx.AssocMap (
     all,
     lookup,
     member,
+    toList,
  )
 import PlutusTx.Bool (
     Bool (..),
@@ -62,7 +67,9 @@ import PlutusTx.Prelude (
     Maybe (..),
     any,
     find,
+    length,
     map,
+    null,
     ($),
     (.),
     (==),
@@ -72,9 +79,9 @@ import Shared (wrapFourArgs, wrapOneArg, wrapThreeArgs, wrapTwoArgs)
 -- [General notes on this file]
 -- This file contains three plutus scripts, the script that will be used as the Dutch DREP,
 -- called 'dutchDrepCredential'. The other script is a spending script called `dutchDrepLockScript` and
--- a simple NFT minting script that is made unique by parametrizing a UTXO that needs to be spend.
+-- a simple NFT minting script that is made unique by parametrizing a UTXO that needs to be spent.
 --
--- The `dutchDrepLockScript` script is parameterized by the currency symbol of the NFT that will be locked
+-- The `dutchDrepLockScript` script is parametrized by the currency symbol of the NFT that will be locked
 -- at the `dutchDrepLockScript` script. The `dutchDrepLockScript` script defines under what conditions the
 -- NFT can witness a certificate related to the Dutch DREP (e.g. register / update / vote as the DREP).
 -- For now only the `dutchDrepCredential` script is implemented, the `dutchDrepLockScript` script will be
@@ -102,15 +109,58 @@ wrappedDutchDrepCredential = wrapTwoArgs dutchDrepCredential
 dutchDrepCredentialCode :: CompiledCode (BuiltinData -> BuiltinData -> BuiltinUnit)
 dutchDrepCredentialCode = $$(compile [||wrappedDutchDrepCredential||])
 
+-- [The Dutch Drep lock script]
+-- This script is not implemented yet.
+{-# INLINEABLE dutchDrepLockScript #-}
+dutchDrepLockScript :: ScriptContext -> Bool
+dutchDrepLockScript _ = True
+
+{-# INLINEABLE wrappedDutchDrepLockScript #-}
+wrappedDutchDrepLockScript :: BuiltinData -> BuiltinUnit
+wrappedDutchDrepLockScript = wrapOneArg dutchDrepLockScript
+
+dutchDrepLockScriptCode :: CompiledCode (BuiltinData -> BuiltinUnit)
+dutchDrepLockScriptCode = $$(compile [||wrappedDutchDrepLockScript||])
+
+-- [The NFT minting script]
+-- This script is a simple minting script that will mint a unique NFT by parametrizing
+-- the UTXO that needs to be spent. Note that this NFT cannot be burned, this is
+-- deliberate to ensure assumptions about the NFT.
+{-# INLINEABLE dutchDrepNFTScript #-}
+dutchDrepNFTScript :: TxOutRef -> ScriptContext -> Bool
+dutchDrepNFTScript utxo ctx = case scriptContextScriptInfo ctx of
+    MintingScript sym -> consumesUTxO && checkMintedValue sym
+    _ -> False
+  where
+    -- The list of transaction inputs being consumed in this transaction.
+    txInputs = txInfoInputs . scriptContextTxInfo $ ctx
+    -- Check if the parametrized UTXO is being consumed in this transaction.
+    consumesUTxO = any (\txIn -> txInInfoOutRef txIn == utxo) txInputs
+    -- The minted value map in this transaction.
+    mintedValueMap = getValue . txInfoMint . scriptContextTxInfo $ ctx
+    -- Check if the minted value is indeed that of a unique NFT.
+    checkMintedValue sym' = case lookup sym' mintedValueMap of
+        Just value ->
+            let ((tn, n) : xs) = toList value
+             in null xs && n == 1
+        Nothing -> False
+
+{-# INLINEABLE wrappedDutchDrepNFTScript #-}
+wrappedDutchDrepNFTScript :: BuiltinData -> BuiltinData -> BuiltinUnit
+wrappedDutchDrepNFTScript = wrapTwoArgs dutchDrepNFTScript
+
+dutchDrepNFTScriptCode :: CompiledCode (BuiltinData -> BuiltinData -> BuiltinUnit)
+dutchDrepNFTScriptCode = $$(compile [||wrappedDutchDrepNFTScript||])
+
 -- Testing purposes
 
-{-# INLINEABLE alwaysTrueMint #-}
-alwaysTrueMint :: BuiltinData -> Bool
-alwaysTrueMint _ = True
+{-# INLINEABLE alwaysTrue #-}
+alwaysTrue :: BuiltinData -> Bool
+alwaysTrue _ = True
 
-{-# INLINEABLE wrappedAlwaysTrueMint #-}
-wrappedAlwaysTrueMint :: BuiltinData -> BuiltinUnit
-wrappedAlwaysTrueMint = wrapOneArg alwaysTrueMint
+{-# INLINEABLE wrappedAlwaysTrue #-}
+wrappedAlwaysTrue :: BuiltinData -> BuiltinUnit
+wrappedAlwaysTrue = wrapOneArg alwaysTrue
 
-alwaysTrueMintCode :: CompiledCode (BuiltinData -> BuiltinUnit)
-alwaysTrueMintCode = $$(compile [||wrappedAlwaysTrueMint||])
+alwaysTrueCode :: CompiledCode (BuiltinData -> BuiltinUnit)
+alwaysTrueCode = $$(compile [||wrappedAlwaysTrue||])

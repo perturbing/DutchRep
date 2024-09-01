@@ -80,7 +80,7 @@ printDataToJSON = putStrLn . BS8.unpack . prettyPrintJSON . dataToJSON
 initTxOutRef :: PlutusV2.TxOutRef
 initTxOutRef =
     PlutusV2.TxOutRef
-        ((PlutusV2.TxId . P.integerToByteString BigEndian 32) 0x77c5408a5bce7c4c317b7a0b666be913038741ba645df443f0cb0e6ae9740cd6)
+        ((PlutusV2.TxId . P.integerToByteString BigEndian 32) 0xac35fc7905550edfd5cfcb3218db10c77af8540367b20d4e0eaadc663d709ebf)
         1
 
 -- The above TxOutRef is applied to the V2 script to finalize the script

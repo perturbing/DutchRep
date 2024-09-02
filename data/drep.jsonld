@@ -1,0 +1,73 @@
+{
+    "@context": {
+        "CIP100": "https://github.com/cardano-foundation/CIPs/blob/master/CIP-0100/README.md#",
+        "CIP119": "https://github.com/cardano-foundation/CIPs/blob/master/CIP-0119/README.md#",
+        "hashAlgorithm": "CIP100:hashAlgorithm",
+        "body": {
+            "@id": "CIP119:body",
+            "@context": {
+                "references": {
+                    "@id": "CIP119:references",
+                    "@container": "@set",
+                    "@context": {
+                        "GovernanceMetadata": "CIP100:GovernanceMetadataReference",
+                        "Other": "CIP100:OtherReference",
+                        "label": "CIP100:reference-label",
+                        "uri": "CIP100:reference-uri"
+                    }
+                },
+                "paymentAddress": "CIP119:paymentAddress",
+                "givenName": "CIP119:givenName",
+                "image": {
+                    "@id": "CIP119:image",
+                    "@context": {
+                        "ImageObject": "https://schema.org/ImageObject"
+                    }
+                },
+                "objectives": "CIP119:objectives",
+                "motivations": "CIP119:motivations",
+                "qualifications": "CIP119:qualifications"
+            }
+        }
+    },
+    "hahsAlgorithm": "blake2b-256",
+    "body": {
+        "paymentAddress": "addr1qypqzpsejz527jutkzn598ly4nsgqrxs6v59grf3aht697ts562am6l0sd9yqha6sdkaxakm3d7rt7rfj5e80jy8xmws3gc2u9",
+        "givenName": "The Dutch Drep",
+        "image": {
+            "@type": "ImageObject",
+            "contentUrl": "https://avatars.githubusercontent.com/u/107037423?s=400&u=f68283ddc8a714747045865ca5663b7e0c16502a&v=4",
+            "sha256": "a57e38fe7c1a5fbad47bd28e1a152dd8ab976e68d3d6df92f16baa2a81164823"
+        },
+        "objectives": "tbd",
+        "motivations": "tbd",
+        "qualifications": "tbd",
+        "references": [
+          {
+            "@type": "Link",
+            "label": "Open Source Code for this Drep",
+            "uri": "https://github.com/perturbing/DutchRep"
+          },
+          {
+            "@type": "Link",
+            "label": "Thomas Vellekoop (IO)",
+            "uri": "https://x.com/perturbing101"
+          },
+          {
+            "@type": "Link",
+            "label": "Max van Rossem (SPO)",
+            "uri": "https://x.com/MaxRossem"
+          },
+          {
+            "@type": "Link",
+            "label": "Denicio Bernier (CF)",
+            "uri": "https://x.com/DenicioBernier"
+          },
+          {
+            "@type": "Link",
+            "label": "Stephen Castermans (SPO)",
+            "uri": "https://x.com/beadapool"
+          }
+        ]
+    }
+}

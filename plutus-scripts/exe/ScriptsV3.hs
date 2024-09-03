@@ -78,7 +78,7 @@ import Shared (wrapFourArgs, wrapOneArg, wrapThreeArgs, wrapTwoArgs)
 -- This file contains two plutus scripts, the script that will be used as the Dutch DREP,
 -- called 'dutchDrepCredential'. The other script is a spending script called `dutchDrepLockScript`.
 --
--- The `dutchDrepLockScript` script is parametrized by the currency symbol of the NFT that will be locked
+-- The `dutchDrepCredential` script is parametrized by the currency symbol of the NFT that will be locked
 -- at the `dutchDrepLockScript` script. The `dutchDrepLockScript` script defines under what conditions the
 -- NFT can witness a certificate related to the Dutch DREP (e.g. register / update / vote as the DREP).
 -- For now only the `dutchDrepCredential` script is implemented, the `dutchDrepLockScript` script will be

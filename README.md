@@ -1,4 +1,4 @@
-![image](https://github.com/user-attachments/assets/f87f8d7d-5e6a-4a4b-adad-5b827120072d)# DutchRep
+# DutchRep
 A simple plutus script for the basis of the Dutch Drep (more on this consortium later).
 
 The Drep has hash `e5ab37261b3d63600d566564879370aea031ea3108b0a6bd8cef58aa` on mainnet (this [transaction](https://cexplorer.io/tx/a37a8fd3d2bc6d92e7d9e370f70e106dfc06cb22cf081192bc7bfafcdf73c2a8/script#data) registered it). The Drep fingerprint is:

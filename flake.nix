@@ -29,6 +29,8 @@
       inputs.hackage.follows = "hackage";
     };
 
+    cardano-node.url = "github:IntersectMBO/cardano-node/9.1.1";
+
   };
 
 

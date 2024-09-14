@@ -101,6 +101,10 @@ appliedDutchDrepCredentialCode = dutchDrepCredentialCode `unsafeApplyCode` Plutu
 scriptHashDutchDrepCredential :: ScriptHash
 scriptHashDutchDrepCredential = hashScript . PlutusScript PlutusScriptV3 . PlutusScriptSerialised . PlutusV3.serialiseCompiledCode $ appliedDutchDrepCredentialCode
 
+-- The script hash of the Dutch Drep lock script
+dutchDrepLockScriptHash :: ScriptHash
+dutchDrepLockScriptHash = hashScript . PlutusScript PlutusScriptV3 . PlutusScriptSerialised . PlutusV3.serialiseCompiledCode $ dutchDrepLockScriptCode
+
 main :: IO ()
 main = do
     -- writeCodeToFile PlutusScriptV3 "./assets/V3/alwaysTrueV3.plutus" alwaysTrueCodeV3
@@ -109,3 +113,5 @@ main = do
     print $ "Currency Symbol (PolicyID) of the Dutch Drep NFT: " ++ show dutchDrepNFTSymbol
     writeCodeToFile PlutusScriptV3 "./assets/V3/dutchDrepCredential.plutus" appliedDutchDrepCredentialCode
     print $ "Script Hash of Credential: " ++ show scriptHashDutchDrepCredential
+    writeCodeToFile PlutusScriptV3 "./assets/V3/dutchDrepLockScript.plutus" dutchDrepLockScriptCode
+    print $ "Script Hash of Lock Script: " ++ show dutchDrepLockScriptHash

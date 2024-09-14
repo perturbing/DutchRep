@@ -3,6 +3,8 @@
 {-# LANGUAGE OverloadedStrings #-}
 {-# LANGUAGE Strict #-}
 {-# LANGUAGE TemplateHaskell #-}
+{-# LANGUAGE TypeApplications #-}
+{-# LANGUAGE ViewPatterns #-}
 {-# LANGUAGE NoImplicitPrelude #-}
 {-# OPTIONS_GHC -Wno-unrecognised-pragmas #-}
 {-# OPTIONS_GHC -fno-full-laziness #-}
@@ -24,8 +26,10 @@ module ScriptsV3 (
 import PlutusLedgerApi.V3 (
     CurrencySymbol,
     Datum (..),
+    FromData (..),
     OutputDatum (..),
     PubKeyHash,
+    Redeemer (..),
     ScriptContext (..),
     ScriptInfo (..),
     ScriptPurpose (..),
@@ -70,6 +74,7 @@ import PlutusTx.Prelude (
     null,
     ($),
     (.),
+    (<$>),
     (==),
  )
 import Shared (wrapFourArgs, wrapOneArg, wrapThreeArgs, wrapTwoArgs)
@@ -106,11 +111,24 @@ wrappedDutchDrepCredential = wrapTwoArgs dutchDrepCredential
 dutchDrepCredentialCode :: CompiledCode (BuiltinData -> BuiltinData -> BuiltinUnit)
 dutchDrepCredentialCode = $$(compile [||wrappedDutchDrepCredential||])
 
+-- [The Dutch Drep lock script actions ]
+data LockScriptActions = Vote | Update | Recover
+makeIsDataIndexed ''LockScriptActions [('Vote, 0), ('Update, 1), ('Recover, 2)]
+
+-- [The Dutch Drep lock script datum]
+data LockScriptDatum = One | Two | Three
+makeIsDataIndexed ''LockScriptDatum [('One, 0), ('Two, 1), ('Three, 2)]
+
 -- [The Dutch Drep lock script]
--- This script is not implemented yet.
 {-# INLINEABLE dutchDrepLockScript #-}
 dutchDrepLockScript :: ScriptContext -> Bool
-dutchDrepLockScript _ = True
+dutchDrepLockScript ctx = case scriptContextScriptInfo ctx of
+    SpendingScript txOutRef maybeDtm -> case fromBuiltinData @LockScriptDatum . getDatum <$> maybeDtm of
+        Just dtm -> False -- TODO: Implement the Dutch DREP lock script
+        Nothing -> True
+    _ -> False
+  where
+    maybeRed = fromBuiltinData @LockScriptActions . getRedeemer $ scriptContextRedeemer ctx
 
 {-# INLINEABLE wrappedDutchDrepLockScript #-}
 wrappedDutchDrepLockScript :: BuiltinData -> BuiltinUnit

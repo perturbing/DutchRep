@@ -30,7 +30,7 @@
             }
         }
     },
-    "hahsAlgorithm": "blake2b-256",
+    "hashAlgorithm": "blake2b-256",
     "body": {
         "paymentAddress": "addr1qypqzpsejz527jutkzn598ly4nsgqrxs6v59grf3aht697ts562am6l0sd9yqha6sdkaxakm3d7rt7rfj5e80jy8xmws3gc2u9",
         "givenName": "The Dutch Drep",

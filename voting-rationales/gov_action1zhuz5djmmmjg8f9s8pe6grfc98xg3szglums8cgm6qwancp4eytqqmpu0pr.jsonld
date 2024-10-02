@@ -1,0 +1,52 @@
+{
+    "@context": {
+        "@language": "en-us",
+        "hashAlgorithm": "https://github.com/cardano-foundation/CIPs/blob/master/CIP-0100/README.md#hashAlgorithm",
+        "body": {
+            "@id": "https://github.com/cardano-foundation/CIPs/blob/master/CIP-0100/README.md#body",
+            "@context": {
+                "references": {
+                    "@id": "https://github.com/cardano-foundation/CIPs/blob/master/CIP-0100/README.md#references",
+                    "@container": "@set",
+                    "@context": {
+                        "governanceMetadata": "https://github.com/cardano-foundation/CIPs/blob/master/CIP-0100/README.md#GovernanceMetadataReference",
+                        "other": "https://github.com/cardano-foundation/CIPs/blob/master/CIP-0100/README.md#OtherReference",
+                        "label": "https://github.com/cardano-foundation/CIPs/blob/master/CIP-0100/README.md#reference-label",
+                        "uri": "https://github.com/cardano-foundation/CIPs/blob/master/CIP-0100/README.md#reference-uri"
+                    }
+                },
+                "comment": "https://github.com/cardano-foundation/CIPs/blob/master/CIP-0100/README.md#comment",
+                "externalUpdates": {
+                    "@id": "https://github.com/cardano-foundation/CIPs/blob/master/CIP-0100/README.md#externalUpdates",
+                    "@context": {
+                        "title": "https://github.com/cardano-foundation/CIPs/blob/master/CIP-0100/README.md#update-title",
+                        "uri": "https://github.com/cardano-foundation/CIPs/blob/master/CIP-0100/README.md#update-uri"
+                    }
+                }
+            }
+        },
+        "authors": {
+            "@id": "https://github.com/cardano-foundation/CIPs/blob/master/CIP-0100/README.md#authors",
+            "@container": "@set",
+            "@context": {
+                "did": "@id",
+                "name": "http://xmlns.com/foaf/0.1/name",
+                "witness": {
+                    "@id": "https://github.com/cardano-foundation/CIPs/blob/master/CIP-0100/README.md#witness",
+                    "@context": {
+                        "witnessAlgorithm": "https://github.com/cardano-foundation/CIPs/blob/master/CIP-0100/README.md#witnessAlgorithm",
+                        "publicKey": "https://github.com/cardano-foundation/CIPs/blob/master/CIP-0100/README.md#publicKey",
+                        "signature": "https://github.com/cardano-foundation/CIPs/blob/master/CIP-0100/README.md#signature"
+                    }
+                }
+            }
+        }
+    },
+    "hashAlgorithm": "blake2b-256",
+    "authors": [
+      { "name": "The Dutch DRep" }
+    ],
+    "body": {
+      "comment": "We, the Dutch DRep, extend our gratitude to Adam Dean for submitting the first governance action, sparking the exercise of our voting rights. While this proposal is lighthearted in nature, it provides an important opportunity for the community to engage in governance.\n\nHowever, after careful consideration, the Dutch DRep will vote \"No\" on this information action for two main reasons:\n\n    1) Neutrality of Naming: We believe that \"HOSKY\" does not represent the neutrality that should be associated with a hard fork event. A neutral name ensures inclusivity and professional communication within the broader ecosystem.\n\n    2) Clarity and Continuity: The name \"Chang 2\" is a logical continuation of \"Chang 1,\" maintaining consistency in ongoing communications. A name change at this stage could create confusion, undermining the clarity and transparency of messaging that has already reached users and the media.\n\n In conclusion, while this proposal offers a creative approach, we prioritize neutrality and consistency in our decision-making."
+  }
+}

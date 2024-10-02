@@ -1,15 +1,15 @@
 # DutchRep
 A simple plutus script for the basis of the Dutch Drep (more on this consortium later).
 
-The Drep has hash `e5ab37261b3d63600d566564879370aea031ea3108b0a6bd8cef58aa` on mainnet (this [transaction](https://cexplorer.io/tx/a37a8fd3d2bc6d92e7d9e370f70e106dfc06cb22cf081192bc7bfafcdf73c2a8/script#data) registered it). The Drep fingerprint is:
+The Drep has hash `199ad2959c8c4e4d50a04a0f3d873b692ff86fbc6a195dd44d17b746` on mainnet (this [transaction](https://cexplorer.io/tx/cb177a185ab0629134ebcd0b0c94ee876f0afc0397a2a915b9fa8b1b14757d97/script#data) registered it). The Drep fingerprint is:
 ```bash
-drep_script1uk4nwfsm843kqr2kv4jg0yms46srr633pzc2d0vvaav25u6n6mf
+drep_script1rxdd99vu338y659qfg8nmpemdyhlsmaudgv4m4zdz7m5vz8uzt6
 ```
 which can be deduced via a bech32 transformation of our script hash,
 ```bash
-bech32 drep_script <<< e5ab37261b3d63600d566564879370aea031ea3108b0a6bd8cef58aa
+bech32 drep_script <<< 199ad2959c8c4e4d50a04a0f3d873b692ff86fbc6a195dd44d17b746\
 ```
-Also see [this](https://www.1694.io/en/dreps/drep1uk4nwfsm843kqr2kv4jg0yms46srr633pzc2d0vvaav25ncwj8g) website for more info and to cross-reference the above claims. 
+Also see [this](https://www.1694.io/en/dreps/drep1rxdd99vu338y659qfg8nmpemdyhlsmaudgv4m4zdz7m5vd9p2hm) website for more info and to cross-reference the above claims. 
 
 ## Build the scripts yourself (via nix)
 To reproduce the scripts in the asset folder (the NFT policy and the Drep script credential), you can do

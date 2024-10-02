@@ -97,6 +97,7 @@ import Shared (wrapFourArgs, wrapOneArg, wrapThreeArgs, wrapTwoArgs)
 dutchDrepCredential :: CurrencySymbol -> ScriptContext -> Bool
 dutchDrepCredential symbol ctx = case scriptContextScriptInfo ctx of
     CertifyingScript _ _ -> any (\value -> symbol `member` value) txInputsValues
+    VotingScript _ -> any (\value -> symbol `member` value) txInputsValues
     _ -> False
   where
     -- The list of transaction inputs being consumed in this transaction.

@@ -9,7 +9,7 @@ which can be deduced via a bech32 transformation of our script hash,
 ```bash
 bech32 drep_script <<< 199ad2959c8c4e4d50a04a0f3d873b692ff86fbc6a195dd44d17b746\
 ```
-Also see [this](https://www.1694.io/en/dreps/drep1rxdd99vu338y659qfg8nmpemdyhlsmaudgv4m4zdz7m5vd9p2hm) website for more info and to cross-reference the above claims. 
+Also see [this](https://gov.tools/drep_directory/drep1rxdd99vu338y659qfg8nmpemdyhlsmaudgv4m4zdz7m5vd9p2hm) website for more info and to cross-reference the above claims. 
 
 ## Build the scripts yourself (via nix)
 To reproduce the scripts in the asset folder (the NFT policy and the Drep script credential), you can do

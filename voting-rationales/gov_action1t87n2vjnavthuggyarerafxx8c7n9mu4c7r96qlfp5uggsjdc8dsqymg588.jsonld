@@ -1,0 +1,52 @@
+{
+    "@context": {
+        "@language": "en-us",
+        "hashAlgorithm": "https://github.com/cardano-foundation/CIPs/blob/master/CIP-0100/README.md#hashAlgorithm",
+        "body": {
+            "@id": "https://github.com/cardano-foundation/CIPs/blob/master/CIP-0100/README.md#body",
+            "@context": {
+                "references": {
+                    "@id": "https://github.com/cardano-foundation/CIPs/blob/master/CIP-0100/README.md#references",
+                    "@container": "@set",
+                    "@context": {
+                        "governanceMetadata": "https://github.com/cardano-foundation/CIPs/blob/master/CIP-0100/README.md#GovernanceMetadataReference",
+                        "other": "https://github.com/cardano-foundation/CIPs/blob/master/CIP-0100/README.md#OtherReference",
+                        "label": "https://github.com/cardano-foundation/CIPs/blob/master/CIP-0100/README.md#reference-label",
+                        "uri": "https://github.com/cardano-foundation/CIPs/blob/master/CIP-0100/README.md#reference-uri"
+                    }
+                },
+                "comment": "https://github.com/cardano-foundation/CIPs/blob/master/CIP-0100/README.md#comment",
+                "externalUpdates": {
+                    "@id": "https://github.com/cardano-foundation/CIPs/blob/master/CIP-0100/README.md#externalUpdates",
+                    "@context": {
+                        "title": "https://github.com/cardano-foundation/CIPs/blob/master/CIP-0100/README.md#update-title",
+                        "uri": "https://github.com/cardano-foundation/CIPs/blob/master/CIP-0100/README.md#update-uri"
+                    }
+                }
+            }
+        },
+        "authors": {
+            "@id": "https://github.com/cardano-foundation/CIPs/blob/master/CIP-0100/README.md#authors",
+            "@container": "@set",
+            "@context": {
+                "did": "@id",
+                "name": "http://xmlns.com/foaf/0.1/name",
+                "witness": {
+                    "@id": "https://github.com/cardano-foundation/CIPs/blob/master/CIP-0100/README.md#witness",
+                    "@context": {
+                        "witnessAlgorithm": "https://github.com/cardano-foundation/CIPs/blob/master/CIP-0100/README.md#witnessAlgorithm",
+                        "publicKey": "https://github.com/cardano-foundation/CIPs/blob/master/CIP-0100/README.md#publicKey",
+                        "signature": "https://github.com/cardano-foundation/CIPs/blob/master/CIP-0100/README.md#signature"
+                    }
+                }
+            }
+        }
+    },
+    "hashAlgorithm": "blake2b-256",
+    "authors": [
+      { "name": "The Dutch DRep" }
+    ],
+    "body": {
+      "comment": "We, the Dutch DRep, vote \"Yes\" on this information action, as we align with the sentiment expressed in the proposal. This action is a heartfelt recognition of the foundational work that brought Cardano to where it stands today. It embodies the essence of community-driven progress and reflects the spirit of collective purpose that has always been central to the Cardano ethos.\n\n By supporting this proposal, we reaffirm our commitment to guiding this blockchain in the decentralized ecosystem that has emerged, ensuring that the principles of dedication, vision, and collaboration continue to thrive. We look forward to playing our part in fostering the ethos established at the foundation of Cardano and advancing it through a decentralized, community-driven future.\n\n Our vote is a celebration of shared values and a promise to uphold these principles as we collectively shape the path ahead."
+  }
+}

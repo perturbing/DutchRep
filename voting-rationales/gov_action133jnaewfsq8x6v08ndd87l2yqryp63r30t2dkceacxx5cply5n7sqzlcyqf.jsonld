@@ -1,0 +1,65 @@
+{
+    "@context": {
+        "CIP100": "https://github.com/cardano-foundation/CIPs/blob/master/CIP-0100/README.md#",
+        "authors": {
+            "@container": "@set",
+            "@context": {
+                "name": "http://xmlns.com/foaf/0.1/name",
+                "witness": {
+                    "@context": {
+                        "publicKey": "CIP100:publicKey",
+                        "signature": "CIP100:signature",
+                        "witnessAlgorithm": "CIP100:witnessAlgorithm"
+                    },
+                    "@id": "CIP100:witness"
+                }
+            },
+            "@id": "CIP100:authors"
+        },
+        "body": {
+            "@context": {
+                "comment": "CIP100:comment",
+                "externalUpdates": {
+                    "@context": {
+                        "title": "CIP100:update-title",
+                        "uri": "CIP100:uri"
+                    },
+                    "@id": "CIP100:externalUpdates"
+                },
+                "references": {
+                    "@container": "@set",
+                    "@context": {
+                        "GovernanceMetadata": "CIP100:GovernanceMetadataReference",
+                        "Other": "CIP100:OtherReference",
+                        "label": "CIP100:reference-label",
+                        "referenceHash": {
+                            "@context": {
+                                "hashAlgorithm": "CIP100:hashAlgorithm",
+                                "hashDigest": "CIP100:hashDigest"
+                            },
+                            "@id": "CIP100:referenceHash"
+                        },
+                        "uri": "CIP100:reference-uri"
+                    },
+                    "@id": "CIP100:references"
+                }
+            },
+            "@id": "CIP100:body"
+        },
+        "hashAlgorithm": "CIP100:hashAlgorithm"
+    },
+    "hashAlgorithm": "blake2b-256",
+    "authors": [
+        {
+            "name": "The Dutch Drep",
+            "witness": {
+                "witnessAlgorithm": "ed25519",
+                "publicKey": "819720b9d33aa3bf7864e68f42c9def1edad906a9b1fd942e624e11902170bb4",
+                "signature": "aff53571a730461f60676582d1d3b82a5f965ee94fba5524bf8ad4ded482e8b311aab1d857a11868cf40b5f9f8e84a8b5ab16c47005ab72bfc580046945e140b"
+            }
+        }
+    ],
+    "body": {
+        "comment": "We, the Dutch DRep, commend the thorough and community-driven process that led to this proposed Cardano Constitution. The extensive workshops, global participation, and meaningful dialogue demonstrate the collaborative spirit that defines the Cardano ecosystem. \n\nFollowing careful deliberation with our delegates, we recognize:\n\n1. Commitment to Continued Development\nThe Cardano Constitution is designed to be a “living document”, with Article VIII providing clear methods for updates. We understand that many key community members, workshop leaders, founding entities, and Charles Hoskinson himself are committed to holding a second Constitutional Convention within five years of this Constitution’s ratification. This future convention will address lessons learned, resolve identified gaps or inconsistencies, propose updated texts, and test the effectiveness of the update process detailed in Article VIII. We support this Constitution with the understanding that ongoing refinement is both expected and necessary.\n\n2. Forward Momentum\nWhile the Constitution may not be perfect, its establishment is crucial for guiding the community’s progress. Without it, we risk stagnation and the possible loss of a shared vision. In our view, the negative consequences of failing to pass the Constitution outweigh the drawbacks of adopting an “imperfect” version. Cardano’s governance now requires real-world experience and empirical data to evolve effectively.\n\n3. Consensus through Compromise\nThe “minimal viable governance” approach reflects the need to balance various perspectives. Some level of discomfort among all stakeholders is a natural sign of a fair compromise.\nIn light of these factors, we, the Dutch DRep, endorse and vote “Yes” on this governance action. By adopting the Constitution now, while committing to continue refining it, we strike the right balance between addressing immediate governance needs and preserving the pathway for future improvements.\n\nTo mark this historic governance action, we wish to share this quote with the Cardano community:\n\n\"Als je een stem in je hoort zeggen 'je kan niet schilderen', schilder dan vooral en die stem zal het zwijgen opgelegd worden.\" - Vincent Willem Van Gogh\n"
+    }
+}

@@ -1,0 +1,66 @@
+{
+  "@context": {
+    "CIP100": "https://github.com/cardano-foundation/CIPs/blob/master/CIP-0100/README.md#",
+    "authors": {
+      "@container": "@set",
+      "@context": {
+        "name": "http://xmlns.com/foaf/0.1/name",
+        "witness": {
+          "@context": {
+            "publicKey": "CIP100:publicKey",
+            "signature": "CIP100:signature",
+            "witnessAlgorithm": "CIP100:witnessAlgorithm"
+          },
+          "@id": "CIP100:witness"
+        }
+      },
+      "@id": "CIP100:authors"
+    },
+    "body": {
+      "@context": {
+        "comment": "CIP100:comment",
+        "externalUpdates": {
+          "@context": {
+            "title": "CIP100:update-title",
+            "uri": "CIP100:uri"
+          },
+          "@id": "CIP100:externalUpdates"
+        },
+        "references": {
+          "@container": "@set",
+          "@context": {
+            "GovernanceMetadata": "CIP100:GovernanceMetadataReference",
+            "Other": "CIP100:OtherReference",
+            "label": "CIP100:reference-label",
+            "referenceHash": {
+              "@context": {
+                "hashAlgorithm": "CIP100:hashAlgorithm",
+                "hashDigest": "CIP100:hashDigest"
+              },
+              "@id": "CIP100:referenceHash"
+            },
+            "uri": "CIP100:reference-uri"
+          },
+          "@id": "CIP100:references"
+        }
+      },
+      "@id": "CIP100:body"
+    },
+    "hashAlgorithm": "CIP100:hashAlgorithm"
+  },
+  "hashAlgorithm": "blake2b-256",
+  "authors": [
+    {
+      "name": "The Dutch Drep",
+      "witness": {
+        "witnessAlgorithm": "ed25519",
+        "publicKey": "819720b9d33aa3bf7864e68f42c9def1edad906a9b1fd942e624e11902170bb4",
+        "signature": "22f629dbd10b672fac66d6db53d89d746b4450b186d73489e8c18ae6054183055a4b710fe1b5f6b15d5c0125f472fab3cc50f6ad3b7deeed95de66adde830f0a"
+      }
+    }
+  ],
+  "body": {
+    "govActionId": "gov_action1js2s9v92zpxg2rge0y3jt9zy626he2m67x9kx9phw4r942kvsn6sqfym0d7",
+    "comment": "We, the Dutch DRep, vote “No” on this proposal to reduce the Cardano treasury cut from 20% to 10%. We would like to thank Andrew Westberg for his effort and for initiating this important discussion. Our reasons for voting “No” are as follows:\n\n1. While the proposal aims to improve economic incentives, the evidence presented is not sufficiently conclusive to demonstrate its long-term impact. The rationale appears somewhat one-sided and lacks robust data to support such a significant change.\n\n2. We also disagree with the method by which this proposal was put forth, moving straight to an on-chain governance action without a more thorough off-chain review. We believe major economic parameter changes should follow a careful, well-structured, and transparent deliberation process.\n\n3. A recent video titled “Cardano: NerdOut – Let’s Have a TEA Party” frames a ‘No’ vote as an endorsement of the current 20% tax. We do not share that perspective. Our ‘No’ vote pertains strictly to this immediate request to lower the parameter to 10%. We believe a more comprehensive analysis and community-driven consensus should guide any revision of the treasury cut.\n\nFor these reasons, we cast our vote as “No” and invite further evidence-based discussion and inclusive engagement to reach a sustainable decision on treasury parameters."
+  }
+}

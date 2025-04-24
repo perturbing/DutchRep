@@ -8,7 +8,6 @@ cabalProject:
   packages = lib.traceSeq inputs.CHaP [
     pkgs.jq
     pkgs.ghcid
-    inputs.cardano-node.outputs.packages.${system}.cardano-cli
   ];
 
   preCommit = {

@@ -1,0 +1,66 @@
+{
+  "@context": {
+    "CIP100": "https://github.com/cardano-foundation/CIPs/blob/master/CIP-0100/README.md#",
+    "authors": {
+      "@container": "@set",
+      "@context": {
+        "name": "http://xmlns.com/foaf/0.1/name",
+        "witness": {
+          "@context": {
+            "publicKey": "CIP100:publicKey",
+            "signature": "CIP100:signature",
+            "witnessAlgorithm": "CIP100:witnessAlgorithm"
+          },
+          "@id": "CIP100:witness"
+        }
+      },
+      "@id": "CIP100:authors"
+    },
+    "body": {
+      "@context": {
+        "comment": "CIP100:comment",
+        "externalUpdates": {
+          "@context": {
+            "title": "CIP100:update-title",
+            "uri": "CIP100:uri"
+          },
+          "@id": "CIP100:externalUpdates"
+        },
+        "references": {
+          "@container": "@set",
+          "@context": {
+            "GovernanceMetadata": "CIP100:GovernanceMetadataReference",
+            "Other": "CIP100:OtherReference",
+            "label": "CIP100:reference-label",
+            "referenceHash": {
+              "@context": {
+                "hashAlgorithm": "CIP100:hashAlgorithm",
+                "hashDigest": "CIP100:hashDigest"
+              },
+              "@id": "CIP100:referenceHash"
+            },
+            "uri": "CIP100:reference-uri"
+          },
+          "@id": "CIP100:references"
+        }
+      },
+      "@id": "CIP100:body"
+    },
+    "hashAlgorithm": "CIP100:hashAlgorithm"
+  },
+  "hashAlgorithm": "blake2b-256",
+  "authors": [
+    {
+      "name": "The Dutch Drep",
+      "witness": {
+        "witnessAlgorithm": "ed25519",
+        "publicKey": "819720b9d33aa3bf7864e68f42c9def1edad906a9b1fd942e624e11902170bb4",
+        "signature": "3e38ab74f3b4df99e8da80b8dbb73d4504538b64366e94a43042507df0ac64755fa3c18ea21d4bf26a50cc7591e0918e21cc2163f473918bece7b66c341b960f"
+      }
+    }
+  ],
+  "body": {
+    "govActionId": "gov_action10k0unljvaej0kd89w7pn0zkgdx59c7xkl0x5q78dzvdtd73u0kmqq5xl5y5",
+    "comment": "We, The Dutch DRep, vote Yes on the proposed 200M ADA Net Change Limit (NCL) for 2025.\n\nWhile we previously supported the 350M ADA NCL to prevent further delays in the governance process, our support for this new 200M ADA NCL reflects updated insights gained from the first draft budget. We believe this lower NCL provides essential guardrails for Cardano’s first-ever on-chain budget process.\n\nInitial budget proposals have demonstrated a tendency to overestimate expenses. A more conservative NCL will encourage proposers to prioritize what is truly essential for the ecosystem's growth and maintenance, rather than submitting inflated or \"nice-to-have\" budgets. As is often the case in both public and private sectors, a larger budget invites unnecessary spending.\n\nThis 200M ADA limit preserves treasury sustainability while giving the community space to refine budgeting processes, improve proposal quality, and learn from this foundational year. A lower NCL is not a ceiling on ambition, but a framework for responsible stewardship and long-term planning.\n\nAdditionally, we want to signal our concern regarding the bundling of multiple treasury requests into large lump sums. We fear this practice risks the approval of weaker or unjustified proposals solely because they are packaged alongside more compelling ones. We encourage future budget submissions to separate proposals clearly, so each can be evaluated and voted on according to its individual merit."
+  }
+}

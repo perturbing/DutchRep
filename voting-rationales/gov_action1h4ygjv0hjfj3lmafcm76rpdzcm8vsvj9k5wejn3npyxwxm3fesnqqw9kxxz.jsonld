@@ -1,0 +1,66 @@
+{
+  "@context": {
+    "CIP100": "https://github.com/cardano-foundation/CIPs/blob/master/CIP-0100/README.md#",
+    "authors": {
+      "@container": "@set",
+      "@context": {
+        "name": "http://xmlns.com/foaf/0.1/name",
+        "witness": {
+          "@context": {
+            "publicKey": "CIP100:publicKey",
+            "signature": "CIP100:signature",
+            "witnessAlgorithm": "CIP100:witnessAlgorithm"
+          },
+          "@id": "CIP100:witness"
+        }
+      },
+      "@id": "CIP100:authors"
+    },
+    "body": {
+      "@context": {
+        "comment": "CIP100:comment",
+        "externalUpdates": {
+          "@context": {
+            "title": "CIP100:update-title",
+            "uri": "CIP100:uri"
+          },
+          "@id": "CIP100:externalUpdates"
+        },
+        "references": {
+          "@container": "@set",
+          "@context": {
+            "GovernanceMetadata": "CIP100:GovernanceMetadataReference",
+            "Other": "CIP100:OtherReference",
+            "label": "CIP100:reference-label",
+            "referenceHash": {
+              "@context": {
+                "hashAlgorithm": "CIP100:hashAlgorithm",
+                "hashDigest": "CIP100:hashDigest"
+              },
+              "@id": "CIP100:referenceHash"
+            },
+            "uri": "CIP100:reference-uri"
+          },
+          "@id": "CIP100:references"
+        }
+      },
+      "@id": "CIP100:body"
+    },
+    "hashAlgorithm": "CIP100:hashAlgorithm"
+  },
+  "hashAlgorithm": "blake2b-256",
+  "authors": [
+    {
+      "name": "The Dutch Drep",
+      "witness": {
+        "witnessAlgorithm": "ed25519",
+        "publicKey": "819720b9d33aa3bf7864e68f42c9def1edad906a9b1fd942e624e11902170bb4",
+        "signature": "471da0efb51418b6efacb3b9d6c40d2bc80cdaae008356982780b6855123a870b5186a35ac88f9324fa2f39cd41b2d1834ab24518a938a622b064f293088280c"
+      }
+    }
+  ],
+  "body": {
+    "govActionId": "gov_action1h4ygjv0hjfj3lmafcm76rpdzcm8vsvj9k5wejn3npyxwxm3fesnqqw9kxxz",
+    "comment": "We, the Dutch DRep, vote Yes on the Amaru proposal.\n\nThe team behind Amaru consists of trusted and experienced contributors with a strong track record of delivering critical infrastructure within the Cardano ecosystem. Their proposal is clear, transparent, and constitutionally sound, demonstrating a high standard of governance and accountability.\n\nWe believe the development of a Rust-based node brings meaningful benefits to Cardano. It strengthens decentralization, enhances interoperability, and broadens the developer base. Crucially, it also provides an independent implementation that can act as a constant cross-check of the existing Haskell node—serving as a form of ongoing audit that improves the security and correctness of both.\n\nIn our view, Amaru is a strategically valuable project that aligns well with Cardano’s long-term goals."
+  }
+}

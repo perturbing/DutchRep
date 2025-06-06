@@ -1,0 +1,66 @@
+{
+  "@context": {
+    "CIP100": "https://github.com/cardano-foundation/CIPs/blob/master/CIP-0100/README.md#",
+    "authors": {
+      "@container": "@set",
+      "@context": {
+        "name": "http://xmlns.com/foaf/0.1/name",
+        "witness": {
+          "@context": {
+            "publicKey": "CIP100:publicKey",
+            "signature": "CIP100:signature",
+            "witnessAlgorithm": "CIP100:witnessAlgorithm"
+          },
+          "@id": "CIP100:witness"
+        }
+      },
+      "@id": "CIP100:authors"
+    },
+    "body": {
+      "@context": {
+        "comment": "CIP100:comment",
+        "externalUpdates": {
+          "@context": {
+            "title": "CIP100:update-title",
+            "uri": "CIP100:uri"
+          },
+          "@id": "CIP100:externalUpdates"
+        },
+        "references": {
+          "@container": "@set",
+          "@context": {
+            "GovernanceMetadata": "CIP100:GovernanceMetadataReference",
+            "Other": "CIP100:OtherReference",
+            "label": "CIP100:reference-label",
+            "referenceHash": {
+              "@context": {
+                "hashAlgorithm": "CIP100:hashAlgorithm",
+                "hashDigest": "CIP100:hashDigest"
+              },
+              "@id": "CIP100:referenceHash"
+            },
+            "uri": "CIP100:reference-uri"
+          },
+          "@id": "CIP100:references"
+        }
+      },
+      "@id": "CIP100:body"
+    },
+    "hashAlgorithm": "CIP100:hashAlgorithm"
+  },
+  "hashAlgorithm": "blake2b-256",
+  "authors": [
+    {
+      "name": "The Dutch Drep",
+      "witness": {
+        "witnessAlgorithm": "ed25519",
+        "publicKey": "819720b9d33aa3bf7864e68f42c9def1edad906a9b1fd942e624e11902170bb4",
+        "signature": "c1452973438fd868a75a0bf4eba46f41b21902e3e9f9684895794cb9e0b87071dc3f3318aac7af2ec887349ae05957e692c0fe25efe4693bda2d764197f67c08"
+      }
+    }
+  ],
+  "body": {
+    "govActionId": "gov_action1vdlrcftd48qn2zz8egepr6xyfcmxpfz8r69k769gc5mhg662adesq9yy8pl",
+    "comment": "We, the Dutch DRep, vote No on this proposal.\n\nWe are aligned with the existing Net Change Limit (NCL) proposed by Intersect for the 2026 period. Introducing an alternative NCL at this stage creates unnecessary confusion and risks fragmenting consensus around treasury planning."
+  }
+}

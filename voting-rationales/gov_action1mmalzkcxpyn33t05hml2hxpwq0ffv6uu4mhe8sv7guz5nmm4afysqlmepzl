@@ -1,0 +1,66 @@
+{
+  "@context": {
+    "CIP100": "https://github.com/cardano-foundation/CIPs/blob/master/CIP-0100/README.md#",
+    "authors": {
+      "@container": "@set",
+      "@context": {
+        "name": "http://xmlns.com/foaf/0.1/name",
+        "witness": {
+          "@context": {
+            "publicKey": "CIP100:publicKey",
+            "signature": "CIP100:signature",
+            "witnessAlgorithm": "CIP100:witnessAlgorithm"
+          },
+          "@id": "CIP100:witness"
+        }
+      },
+      "@id": "CIP100:authors"
+    },
+    "body": {
+      "@context": {
+        "comment": "CIP100:comment",
+        "externalUpdates": {
+          "@context": {
+            "title": "CIP100:update-title",
+            "uri": "CIP100:uri"
+          },
+          "@id": "CIP100:externalUpdates"
+        },
+        "references": {
+          "@container": "@set",
+          "@context": {
+            "GovernanceMetadata": "CIP100:GovernanceMetadataReference",
+            "Other": "CIP100:OtherReference",
+            "label": "CIP100:reference-label",
+            "referenceHash": {
+              "@context": {
+                "hashAlgorithm": "CIP100:hashAlgorithm",
+                "hashDigest": "CIP100:hashDigest"
+              },
+              "@id": "CIP100:referenceHash"
+            },
+            "uri": "CIP100:reference-uri"
+          },
+          "@id": "CIP100:references"
+        }
+      },
+      "@id": "CIP100:body"
+    },
+    "hashAlgorithm": "CIP100:hashAlgorithm"
+  },
+  "hashAlgorithm": "blake2b-256",
+  "authors": [
+    {
+      "name": "The Dutch Drep",
+      "witness": {
+        "witnessAlgorithm": "ed25519",
+        "publicKey": "819720b9d33aa3bf7864e68f42c9def1edad906a9b1fd942e624e11902170bb4",
+        "signature": "2671cb6b4f34839da6e3174aa8fc01740039d1ed05e1b957b5b654a20219d57a0a37ac2776c56f62afc0561d2ce406ff014bfe361b61c6628b4e87a612c87902"
+      }
+    }
+  ],
+  "body": {
+    "govActionId": "gov_action1mmalzkcxpyn33t05hml2hxpwq0ffv6uu4mhe8sv7guz5nmm4afysqlmepzl",
+    "comment": "We, the Dutch DRep, vote No on this budget Info Action.\n\nWhile we support funding for community-driven initiatives, we have strong reservations about including proposals that introduce protocol-level changes—specifically zkFold and Starstream.\n\nBoth propose ambitious technologies that would require significant modifications to Cardano’s ledger and core protocol. These kinds of changes demand deep coordination with the broader development community and should not be funded without clear technical alignment, ecosystem consensus, and process transparency. Yet, neither proposal provides sufficient clarity on integration challenges, dependencies, or risk factors—and neither team has meaningfully engaged in Cardano’s open CIP process.\n\nAs a constructive path forward, we strongly encourage both teams to initiate a CIP (Cardano Improvement Proposal) and, where appropriate, a CPS (Cardano Problem Statement) that formally outlines their proposed changes. A clear example to follow would be the approach taken by the Leios and Alba proposals, which have demonstrated how protocol innovations can be transparently introduced and evaluated within the community.\n\nWe would also recommend this path for proposals like Midgard, which touches on optimistic rollup design and may similarly intersect with future ledger evolution. Proposals of this scope should first be explored through the CIP/CPS process before treasury funding is considered.\n\nWe also invite fellow DReps to demand greater technical rigor and transparency from high-impact proposals. When millions of dollars in treasury funds are at stake, big claims—especially those involving protocol changes—should not be taken at face value. They must be supported by clearly articulated implementation paths, risk analysis, and evidence of engagement with Cardano’s open governance and development processes.\n\nOur stance is not a rejection of the innovation of zkFold and Starstream. Rather, we believe treasury support for protocol-level initiatives should be contingent on demonstrated ecosystem alignment and technical diligence. In contrast, other proposals included in this budget—such as Blockfrost and the Ledger/hardware wallet initiatives—are narrower in scope, do not require consensus-layer changes, and are much better suited for direct funding at this stage."
+  }
+}
